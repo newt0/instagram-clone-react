@@ -19,7 +19,7 @@ function Post({ username, caption, imageUrl }) {
       {/* image */}
 
       <h4 className="post__text">
-        <strong>{username}</strong>
+        <strong>{username} </strong>
         {caption}
       </h4>
       {/* location */}
