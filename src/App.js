@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Post from "./Post";
-import { db, auth, storage } from "./firebase";
+import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import { Modal, Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
@@ -38,12 +38,6 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
-
-  console.log("this is storage.ref")
-  console.log(storage.ref)
-  console.log("Which type of storage.ref is?")
-  console.log(typeof(storage.ref))
-
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -94,12 +88,6 @@ function App() {
 
   return (
     <div className="App">
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        <h3>Sorry You need to login</h3>
-      )}
-
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -183,14 +171,6 @@ function App() {
         </div>
       )}
 
-      {/* <Button
-        type="submit"
-        onClick={() => {
-          setOpen(true);
-        }}
-      >
-        Sign up
-      </Button> */}
       <h1>Insta clone react!</h1>
 
       {posts.map((post) => (
@@ -200,6 +180,12 @@ function App() {
           imageUrl={post.imageUrl}
         />
       ))}
+
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ) : (
+        <h3>Sorry You need to login</h3>
+      )}
     </div>
   );
 }
