@@ -7,7 +7,7 @@ import "./ImageUpload.css";
 function ImageUpload(username) {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
-  const [caption, setCaption] = useState(" ");
+  const [caption, setCaption] = useState("");
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -60,7 +60,7 @@ function ImageUpload(username) {
       <progress className="imageupload_progress" value={progress} max="100" />
       <input
         type="text"
-        placeholder="caption."
+        placeholder="enter a caption"
         onChange={(event) => setCaption(event.target.value)}
         value={caption}
       />
