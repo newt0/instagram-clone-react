@@ -60,6 +60,19 @@ function App() {
     };
   }, [user, username]);
 
+  useEffect(() => {
+    // this is where the code runs
+    db.collection("posts").onSnapshot((snapshot) => {
+      // every time  new post is added, this code is fired...
+      setPosts(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          post: doc.data(),
+        }))
+      );
+    });
+  }, []);
+
   const signUp = (event) => {
     event.preventDefault();
 
@@ -80,11 +93,6 @@ function App() {
 
     setOpenSignIn(false);
   };
-  useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) => {
-      setPosts(snapshot.docs.map((doc) => doc.data()));
-    });
-  }, []);
 
   return (
     <div className="App">
@@ -173,8 +181,9 @@ function App() {
 
       <h1>Insta clone react!</h1>
 
-      {posts.map((post) => (
+      {posts.map(({ id, post }) => (
         <Post
+          key={id}
           username={post.username}
           caption={post.caption}
           imageUrl={post.imageUrl}
