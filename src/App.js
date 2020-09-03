@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Post from "./Post";
-import { db, auth } from "./firebase";
+import { db, auth, storage } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import { Modal, Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
@@ -38,6 +38,12 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
+
+  console.log("this is storage.ref")
+  console.log(storage.ref)
+  console.log("Which type of storage.ref is?")
+  console.log(typeof(storage.ref))
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
