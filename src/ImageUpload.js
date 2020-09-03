@@ -3,7 +3,6 @@ import { Button } from "@material-ui/core";
 import firebase from "firebase";
 import { storage, db } from "firebase";
 
-
 function ImageUpload(username) {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -43,17 +42,18 @@ function ImageUpload(username) {
             db.collection("posts").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               caption: caption,
-              imageURL: url,
+              imageUrl: url,
               username: username,
             });
-          });
 
-        setProgress(0);
-        setCaption("");
-        setImage(null);
+            setProgress(0);
+            setCaption("");
+            setImage(null);
+          });
       }
     );
   };
+  
   return (
     <div>
       <progress value={progress} max="100" />
