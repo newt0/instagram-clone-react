@@ -8,6 +8,9 @@
 }
 
 .app__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: white;
   object-fit: contain;
   padding: 20px;
