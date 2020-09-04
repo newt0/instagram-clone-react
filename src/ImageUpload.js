@@ -43,7 +43,7 @@ function ImageUpload(username) {
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               caption: caption,
               imageUrl: url,
-              username: username,
+              username: username.username, // "username" is map object only here...Why?
             });
 
             setProgress(0);
