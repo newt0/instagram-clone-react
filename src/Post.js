@@ -46,28 +46,23 @@ function Post({ postId, user, username, caption, imageUrl }) {
           src="https://reactjs.org/logo-og.png"
         />
         <h3>{username}</h3>
-        {/* header→avatar + username */}
       </div>
 
       <img src={imageUrl} alt="" className="post__image" />
-      {/* image */}
 
       <h4 className="post__text">
         <strong>{username} </strong>
         {caption}
       </h4>
-      {/* location */}
 
-      {
-        <div className="post__comments">
-          {comments.map((comment) => (
-            <p>
-              <strong>{comment.username}</strong>
-              {comment.text}
-            </p>
-          ))}
-        </div>
-      }
+      <div className="post__comments">
+        {comments.map((comment) => (
+          <p>
+            <strong>{comment.username}</strong>
+            {comment.text}
+          </p>
+        ))}
+      </div>
 
       {user && (
         <form className="post__commentBox">

@@ -43,7 +43,6 @@ function App() {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
-        console.log(authUser);
         setUser(authUser);
 
         if (authUser.displayName) {
@@ -63,15 +62,17 @@ function App() {
 
   useEffect(() => {
     // this is where the code runs
-    db.collection("posts").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
-      // every time  new post is added, this code is fired...
-      setPosts(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          post: doc.data(),
-        }))
-      );
-    });
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        // every time  new post is added, this code is fired...
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
   }, []);
 
   const signUp = (event) => {
