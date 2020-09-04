@@ -63,7 +63,7 @@ function App() {
 
   useEffect(() => {
     // this is where the code runs
-    db.collection("posts").onSnapshot((snapshot) => {
+    db.collection("posts").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
       // every time  new post is added, this code is fired...
       setPosts(
         snapshot.docs.map((doc) => ({
