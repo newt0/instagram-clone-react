@@ -60,6 +60,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
         {comments.map((comment) => (
           <p>
             <strong>{comment.username}</strong>
+            {" "}
             {comment.text}
           </p>
         ))}
