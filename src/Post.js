@@ -14,7 +14,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
       unsubscribe = db
         .collection("posts")
         .doc(postId)
-        .collection("comment")
+        .collection("comments")
         .orderBy("timestamp", "desc")
         .onSnapshot((snapshot) => {
           setComments(snapshot.docs.map((doc) => doc.data()));
