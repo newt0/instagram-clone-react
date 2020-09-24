@@ -5,7 +5,7 @@ import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import { Modal, Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
-import InstagramEmbed from "react-instagram-embed";
+// import InstagramEmbed from "react-instagram-embed";
 
 function getModalStyle() {
   const top = 50;
@@ -193,7 +193,7 @@ function App() {
             />
           ))}
         </div>
-        <div className="app__postsRight">
+        {/* <div className="app__postsRight">
           <InstagramEmbed
             url="https://instagr.am/p/Zw9o4/"
             maxWidth={320}
@@ -206,7 +206,7 @@ function App() {
             onAfterRender={() => {}}
             onFailure={() => {}}
           />
-        </div>
+        </div> */}
       </div>
 
       {user?.displayName ? (

@@ -4,7 +4,7 @@ import firebase from "firebase";
 import { storage, db } from "./firebase";
 import "./ImageUpload.css";
 
-function ImageUpload({username}) {
+function ImageUpload({ username }) {
   const [image, setImage] = useState(null);
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
